@@ -1,25 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post');
+const authMiddleware = require('../middlewares/authMiddleware');
+const { createPost, editPost, deletePost } = require('../controllers/postController');
 
-// Create post route
-router.post('/', async (req, res) => {
-    const { title, content } = req.body;
-    // Save post to database
-});
+// Create post route (protected)
+router.post('/', authMiddleware, createPost);
 
-// Edit post route
-router.put('/:id', async (req, res) => {
-    const { id } = req.params;
-    const { title, content } = req.body;
-    // Update post in database
-});
+// Edit post route (protected)
+router.put('/:id', authMiddleware, editPost);
 
-// Delete post route
-router.delete('/:id', async (req, res) => {
-    const { id } = req.params;
-    // Delete post from database
-});
+// Delete post route (protected)
+router.delete('/:id', authMiddleware, deletePost);
 
 module.exports = router;
-
