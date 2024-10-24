@@ -58,9 +58,9 @@ app.get('/', (req, res) => {
     res.render('index', { posts: [] }); // Replace with actual posts data
 });
 
-app.use('/users', require('./routes/users')(db)); // Pass db to user routes
-app.use('/posts', require('./routes/posts')(db)); // Pass db to post routes
-app.use('/comments', require('./routes/comments')(db)); // Pass db to comment routes
+app.use('/users', require('./routes/users')(db)); // Ensure this is correct
+app.use('/posts', require('./routes/posts')(db)); // Ensure this is correct
+app.use('/comments', require('./routes/comments')(db)); // Ensure this is correct
 
 // Error handling middleware
 app.use(errorHandler);

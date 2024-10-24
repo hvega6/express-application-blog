@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Post = require('../models/Post');
+const { createPost, editPost, deletePost } = require('../controllers/postController'); // Ensure these are correctly defined
 const authMiddleware = require('../middlewares/authMiddleware');
-const { createPost, editPost, deletePost } = require('../controllers/postController');
 
 // Create post route (protected)
 router.post('/', authMiddleware, createPost);

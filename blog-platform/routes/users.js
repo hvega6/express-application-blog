@@ -28,5 +28,5 @@ module.exports = (db) => {
         });
     });
 
-    return router;
+    return router; // Ensure you return the router
 };
