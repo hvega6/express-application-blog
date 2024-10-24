@@ -12,4 +12,14 @@ router.put('/:id', authMiddleware, editPost);
 // Delete post route (protected)
 router.delete('/:id', authMiddleware, deletePost);
 
-module.exports = router;
+module.exports = function(db) {
+    // Define your routes here
+    router.get('/', (req, res) => {
+        // Example route handler
+        res.send('Post list');
+    });
+
+    // More routes...
+
+    return router;
+};

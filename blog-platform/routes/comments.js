@@ -1,19 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const Comment = require('../models/Comment');
 
-// Add comment route
-router.post('/:postId', async (req, res) => {
-    const { postId } = req.params;
-    const { content } = req.body;
-    // Save comment to database
-});
+module.exports = function(db) {
+    // Define your routes here
+    router.get('/', (req, res) => {
+        // Example route handler
+        res.send('Comment list');
+    });
 
-// Delete comment route
-router.delete('/:commentId', async (req, res) => {
-    const { commentId } = req.params;
-    // Delete comment from database
-});
+    // More routes...
 
-module.exports = router;
-
+    return router;
+};

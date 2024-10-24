@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
 
-module.exports = (db) => {
+module.exports = function(db) {
     // Registration route
     router.post('/register', async (req, res) => {
         const { username, password } = req.body;
@@ -28,5 +28,13 @@ module.exports = (db) => {
         });
     });
 
-    return router; // Ensure you return the router
+    // Define your routes here
+    router.get('/', (req, res) => {
+        // Example route handler
+        res.send('User list');
+    });
+
+    // More routes...
+
+    return router;
 };
