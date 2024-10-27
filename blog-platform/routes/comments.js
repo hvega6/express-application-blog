@@ -4,8 +4,13 @@ const router = express.Router();
 module.exports = function(db) {
     // Define your routes here
     router.get('/', (req, res) => {
-        // Example route handler
-        res.send('Comment list');
+        // Fetch all comments from the database
+        db.collection('comments').find().toArray((err, comments) => {
+            if (err) {
+                return res.status(500).send(err); // Handle error
+            }
+            res.send(comments); // Send the retrieved comments
+        });
     });
 
     // More routes...
