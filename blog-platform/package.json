@@ -4,7 +4,7 @@
   "description": "A simple blog platform using Node.js, Express, and EJS",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "dev": "nodemon app.js"
   },
   "keywords": [

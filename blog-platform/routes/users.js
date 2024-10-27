@@ -10,7 +10,7 @@ module.exports = function(db) {
         
         db.run(`INSERT INTO users (username, password) VALUES (?, ?)`, [username, hashedPassword], function(err) {
             if (err) {
-                return res.status(400).send('Error registering user');
+                return res.status(400).send(err);
             }
             res.status(201).send('User registered successfully');
         });
@@ -28,10 +28,16 @@ module.exports = function(db) {
         });
     });
 
-    // Define your routes here
-    router.get('/', (req, res) => {
-        // Example route handler
-        res.send('User list');
+    
+
+    // Get all users route
+    router.get('/', async (req, res) => {
+        db.all(`SELECT * FROM users`, [], (err, users) => {
+            if (err) {
+                return res.status(500).send(err);
+            }
+            res.json(users); // Respond with the list of users
+        });
     });
 
     // More routes...
